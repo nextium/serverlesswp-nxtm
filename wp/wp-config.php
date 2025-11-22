@@ -51,7 +51,7 @@ else {
     define ( 'DB_COLLATE', 'utf8mb4_general_ci');
   }
   else {
-    define( 'DB_COLLATE', '' );
+    define( 'DB_COLLATE', 'utf8mb4_general_ci' );
   }
 }
 
