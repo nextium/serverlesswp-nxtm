@@ -114,7 +114,6 @@ if (isset($headers['injectHost'])) {
 }
 
 define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
-define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
 
 // Optional S3 credentials for file storage.
 if (isset($_ENV['S3_KEY_ID']) && isset($_ENV['S3_ACCESS_KEY'])) {
