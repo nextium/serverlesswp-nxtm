@@ -145,7 +145,20 @@ if (isset($_ENV['SQLITE_S3_BUCKET'])) {
   // Limit revisions.
   define('WP_POST_REVISIONS', 3);
 }
+// FORZAR URLS PARA VERCEL
+if (isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+    $http_protocol = isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ? 'https' : 'http';
+    $hostname = $_SERVER['HTTP_X_FORWARDED_HOST'];
+    
+    // Define la URL base (sin slash al final)
+    $site_url = $http_protocol . '://' . $hostname;
 
+    define('WP_HOME', $site_url);
+    define('WP_SITEURL', $site_url);
+    
+    // Corrección para que WP sepa que está bajo HTTPS y no haga bucles de redirección
+    $_SERVER['HTTPS'] = 'on';
+}
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
